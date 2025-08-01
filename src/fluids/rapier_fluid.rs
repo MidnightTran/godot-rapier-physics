@@ -249,6 +249,10 @@ impl RapierFluid {
                 self.fluid_handle = physics_engine.fluid_create(
                     self.space_id,
                     self.density,
+                    // TODO(tran): Take a look at this spot and how to set interaction groups
+                    // it appears that it may be possible to change some of the logic around
+                    // this area to make fluids not interact with solids link below
+                    // https://github.com/appsinacup/godot-rapier-physics/issues/252
                     salva::object::interaction_groups::InteractionGroups::all(),
                 );
             }

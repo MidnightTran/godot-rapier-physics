@@ -149,6 +149,20 @@ impl Fluid2D {
     fn set_effects(&mut self, effects: Array<Option<Gd<Resource>>>) {
         FluidImpl::set_effects(self, effects);
     }
+
+    #[func]
+    /// Clear all fluid particles.
+    fn clear_particles(&mut self) {
+        FluidImpl::clear_particles(self);
+        self.to_gd().queue_redraw();
+    }
+    
+    #[func]
+    pub fn delete_particles_at_indices(&mut self, indices: PackedInt32Array) {
+        if !indices.is_empty() {
+            FluidImpl::delete_points(self, indices);
+        }
+    }
 }
 #[godot_api]
 impl INode2D for Fluid2D {

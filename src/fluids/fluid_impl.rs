@@ -184,4 +184,15 @@ impl FluidImpl {
             FluidImpl::delete_points(fluid, to_remove);
         }
     }
+
+    pub fn clear_particles(fluid: &mut Fluid) {
+        let mut all_indices = PackedInt32Array::new();
+        for i in 0..fluid.points.len() {
+            all_indices.push(i as i32);
+        }
+
+        if !all_indices.is_empty() {
+            FluidImpl::delete_points(fluid, all_indices);
+        }        
+    }
 }
