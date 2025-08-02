@@ -254,6 +254,11 @@ impl RapierFluid {
                     // this area to make fluids not interact with solids link below
                     // https://github.com/appsinacup/godot-rapier-physics/issues/252
                     salva::object::interaction_groups::InteractionGroups::all(),
+                    // salva::object::interaction_groups::InteractionGroups::none(),
+                    // salva::object::interaction_groups::InteractionGroups::new(
+                        // salva::object::interaction_groups::Group::GROUP_2, // Membership: layer 2
+                        // salva::object::interaction_groups::Group::GROUP_2, // Filter: only interacts with layer 2
+                    // ),
                 );
             }
             self.set_points(self.points.clone(), physics_engine);
